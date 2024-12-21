@@ -1,0 +1,6 @@
+# Xcode
+*.xcuserdata
+*.xccheckout
+*.xcscmblueprint
+*.xcuserdatad/
+
