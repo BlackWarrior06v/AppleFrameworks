@@ -13,7 +13,7 @@ struct FrameworkLayoutColumn: View {
     
     var body: some View {
         
-        NavigationView() {
+        NavigationStack() {
             ScrollView {
                 LazyVGrid(columns: viewModel.columns) {
                     ForEach(MockData.frameworks) { framework in

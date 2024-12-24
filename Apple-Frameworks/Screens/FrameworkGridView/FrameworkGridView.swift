@@ -25,9 +25,15 @@ struct FrameworkGridView: View {
                 viewModel.columnLayout.toggle()
             } label: {
                 let title = viewModel.columnLayout ? "list" : "column"
-                AFButton(title: "Swap to \(title)")                
+//                AFButton(title: "Swap to \(title)")
+                Label("Swap to \(title)", systemImage: "book.fill")
             }
             .padding()
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+    //            .foregroundColor(.yellow)
+    //            .buttonBorderShape(.roundedRectangle(radius: 15))
+            .tint(.red)
             
         }
             
