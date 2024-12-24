@@ -12,11 +12,14 @@ struct FrameworkDetailView: View {
     var framework: Framework
     @Binding var isShowingDetailView: Bool
     @State private var isShowingSafariView: Bool = false
+    var columnLayout: Bool
     
     var body: some View {
         VStack {
             
-            XDismissButton(isShowingDetailView: $isShowingDetailView)
+            if columnLayout {
+                XDismissButton(isShowingDetailView: $isShowingDetailView)
+            }
             
             Spacer()
             
@@ -42,6 +45,6 @@ struct FrameworkDetailView: View {
 
 struct FrameworkDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
+        FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false), columnLayout: false)
     }
 }

@@ -12,22 +12,25 @@ struct FrameworkGridView: View {
     @StateObject var viewModel = FrameworkGridViewModel()
     
     var body: some View {
-        NavigationView() {
-            ScrollView {
-                LazyVGrid(columns: viewModel.columns) {
-                    ForEach(MockData.frameworks) { framework in
-                        FrameworkTitleView(framework: framework)
-                            .onTapGesture {
-                                viewModel.selectedFramework = framework
-                            }
-                    }
-                }
+        
+        VStack {
+            
+            if viewModel.columnLayout {
+                FrameworkLayoutColumn(viewModel: viewModel)
+            } else {
+                FrameworkLayoutList(viewModel: viewModel)
             }
-            .navigationTitle("🍎 Frameworks")
-            .sheet(isPresented: $viewModel.isShowingDetailView) {
-                FrameworkDetailView(framework: viewModel.selectedFramework!, isShowingDetailView: $viewModel.isShowingDetailView)
+            
+            Button {
+                viewModel.columnLayout.toggle()
+            } label: {
+                let title = viewModel.columnLayout ? "list" : "column"
+                AFButton(title: "Swap to \(title)")                
             }
+            .padding()
+            
         }
+            
     }
 }
 
